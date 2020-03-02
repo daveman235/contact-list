@@ -31,8 +31,6 @@ class App extends Component {
   addContact(contact) {
     const generateId = () => Math.round(Math.random() * 100000000);
 
-
-    // alert(contact.name)
     const newContact = {
       id: generateId(),
       name: contact.name,
@@ -55,15 +53,16 @@ class App extends Component {
             </header>
             <div className="App-intro">
               <div className="row">
-                <div className="col-8">
-                  <h1 className="App-title">Contact List</h1>
-                  <ContactList contacts={this.state.contacts}></ContactList>
-                </div>
-                <Link to="/contacts/new">
-                  <button type="button" className="addButton btn btn-primary">
-                    Add New Contact
+                <div className="container col-8">
+                  <h1 className="App-title">My Contact List</h1>
+                  <ContactList contacts={this.state.contacts}>
+                  </ContactList>
+                  <Link to="/contacts/new">
+                    <button type="button" className="addButton btn btn-primary">
+                      Add New Contact
                  </button>
-                </Link>
+                  </Link>
+                </div>
               </div>
             </div>
           </div>
