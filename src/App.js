@@ -58,7 +58,7 @@ class App extends Component {
                   <ContactList contacts={this.state.contacts}>
                   </ContactList>
                   <Link to="/contacts/new">
-                    <button type="button" className="addButton btn btn-primary">
+                    <button type="button" className="addButton btn btn-secondary">
                       Add New Contact
                  </button>
                   </Link>
