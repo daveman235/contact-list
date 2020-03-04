@@ -1,5 +1,6 @@
 import { Switch, Route, Link } from 'react-router-dom';
 import React, { Component } from 'react';
+import { BrowserRouter } from 'react-router-dom';
 import ContactList from './ContactList';
 import IndividualContact from './IndividualContact';
 import AddContact from './AddContact'
@@ -23,12 +24,10 @@ class App extends Component {
 
     }
 
-    this.addContact = this.addContact.bind(this);
-
   }
   // When a new contact is added, this function validates the the input that comes in.
   // From there is gets added to state 
-  addContact(contact) {
+  addContact = (contact) => {
     const generateId = () => Math.round(Math.random() * 100000000);
 
     const newContact = {
@@ -42,6 +41,17 @@ class App extends Component {
   }
 
 
+  removeContact = (contact) => {
+
+    let array = [...this.state.contacts];
+    let contactIndex = this.state.contacts.findIndex(c => c.id == contact)
+    if (contactIndex !== -1) {
+      array.splice(contactIndex, 1)
+      this.setState({ contacts: array })
+    }
+
+  }
+
 
   render() {
     return (
@@ -49,14 +59,12 @@ class App extends Component {
       <Switch>
         <Route exact path={['/', '/contacts']} render={() => (
           <div className="App">
-            <header className="App-header">
-            </header>
+            <header className="App-header"></header>
             <div className="App-intro">
               <div className="row">
                 <div className="container col-8">
                   <h1 className="App-title">My Contact List</h1>
-                  <ContactList contacts={this.state.contacts}>
-                  </ContactList>
+                  <ContactList contacts={this.state.contacts} removeContact={this.removeContact}></ContactList>
                   <Link to="/contacts/new">
                     <button type="button" className="addButton btn btn-secondary">
                       Add New Contact

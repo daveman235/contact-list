@@ -39,6 +39,7 @@ body {
   padding-top: 15%;
   padding-right: 10%;
   padding-left: 10%;
+  text-align: center;
 }
 
 #edit {
@@ -47,13 +48,25 @@ body {
 
 #delete {
   float: right;
+  background: #0f4c81;
 }
 .new-contact {
-  padding-top: 5%;
+  text-align: center;
+  margin-top: 200px;
 }
 
 .addButton {
   float: center;
   margin: 100px;
   background: #0f4c81;
+}
+
+.submitContact {
+  float: center;
+  margin: 100px;
+  background: #0f4c81;
+}
+
+label {
+  font-size: 20px;
 }
