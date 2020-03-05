@@ -22,7 +22,7 @@ class AddContact extends Component {
             <div className="container new-contact">
                 <form>
                     <label htmlFor="inputName">Name:</label><br></br>
-                    <input onChange={(e) => { this.setState({ name: e.target.value }) }} value={this.state.name} type="text" id="name" required minlength="8" maxlength="15" size="30" placeholder="" required />
+                    <input onChange={(e) => { this.setState({ name: e.target.value }) }} value={this.state.name} type="text" id="name" minlength="8" maxlength="15" size="30" placeholder="" required />
                     <br></br>
                     <label htmlFor="inputemail">E-mail:</label><br></br>
                     <input onChange={(e) => { this.setState({ email: e.target.value }) }} value={this.state.email} type="email" id="email" pattern="+@globex.com" size="30" placeholder="" required />

@@ -1,6 +1,5 @@
 import { Switch, Route, Link } from 'react-router-dom';
 import React, { Component } from 'react';
-import { BrowserRouter } from 'react-router-dom';
 import ContactList from './ContactList';
 import IndividualContact from './IndividualContact';
 import AddContact from './AddContact'
@@ -42,7 +41,6 @@ class App extends Component {
 
 
   removeContact = (contact) => {
-
     let array = [...this.state.contacts];
     let contactIndex = this.state.contacts.findIndex(c => c.id == contact)
     if (contactIndex !== -1) {
@@ -77,7 +75,7 @@ class App extends Component {
         )} />
         <Route exact path="/contacts/new" render={() => (<AddContact addContact={this.addContact} />)} />
         <Route exact path="/contacts/:id" render={(props) => (
-          <IndividualContact contacts={this.state.contacts} props={props} />)} />
+          <IndividualContact contacts={this.state.contacts} props={props} history={this.props.history} />)} />
       </Switch>
 
 

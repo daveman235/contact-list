@@ -1,6 +1,6 @@
 import _ from 'lodash'
-import { Link } from 'react-router-dom';
-import React, { Component } from 'react';
+import { Link, Redirect } from 'react-router-dom';
+import React, { Component, } from 'react';
 
 
 
@@ -13,7 +13,7 @@ class IndividualContact extends Component {
         const contact = _.find(this.props.contacts, { id: parseInt(this.props.props.match.params.id, 10) });
 
         if (!contact) {
-            return <div>Sorry, but the contact was not found</div>;
+            return <Redirect to='/contacts' />
         }
 
         return (
