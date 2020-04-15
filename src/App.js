@@ -3,6 +3,7 @@ import React, { Component } from 'react';
 import ContactList from './ContactList';
 import IndividualContact from './IndividualContact';
 import AddContact from './AddContact'
+import EditContact from './EditContact'
 import 'bootstrap/dist/css/bootstrap.css';
 import './App.css';
 
@@ -36,6 +37,7 @@ class App extends Component {
       imageUrl: contact.imageUrl,
       number: contact.number
     }
+
     this.setState({ contacts: this.state.contacts.concat([newContact]) });
   }
 
@@ -50,6 +52,27 @@ class App extends Component {
 
   }
 
+  // editContact = (contact) => {
+  //   console.log("poop")
+  //   let array = [...this.state.contacts];
+  //   let contactIndex = this.state.contacts.findIndex(c => c.id == contact);
+
+  //   console.log(array, "array")
+  //   console.log(contactIndex, "contactIndex")
+  //   if (contactIndex !== -1) {
+  //     array[contactIndex].name = "Farva"
+  //     array[contactIndex].email = "Farva"
+  //     array[contactIndex].number = "Farva"
+  //     this.setState = ({
+  //       contacts: array
+  //     })
+  //   }
+
+  // }
+
+  editButtonClick = (contact) => {
+    this.state.history.push("./")
+  }
 
   render() {
     return (
@@ -62,7 +85,7 @@ class App extends Component {
               <div className="row">
                 <div className="container col-8">
                   <h1 className="App-title">My Contact List</h1>
-                  <ContactList contacts={this.state.contacts} removeContact={this.removeContact}></ContactList>
+                  <ContactList contacts={this.state.contacts} removeContact={this.removeContact} editContact={this.editContact}></ContactList>
                   <Link to="/contacts/new">
                     <button type="button" className="addButton btn btn-secondary">
                       Add New Contact
@@ -75,7 +98,9 @@ class App extends Component {
         )} />
         <Route exact path="/contacts/new" render={() => (<AddContact addContact={this.addContact} />)} />
         <Route exact path="/contacts/:id" render={(props) => (
-          <IndividualContact contacts={this.state.contacts} props={props} history={this.props.history} />)} />
+          <IndividualContact contacts={this.state.contacts} props={props} editContact={this.editContact} />)} />
+        <Route exact path="/contacts/:id/edit" render={(props) => (
+          <EditContact contacts={this.state.contacts} props={props} />)} />
       </Switch>
 
 

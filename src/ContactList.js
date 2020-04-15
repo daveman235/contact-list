@@ -7,8 +7,13 @@ class ContactList extends Component {
 
     handleClick = (e) => {
         this.props.removeContact(e.target.value)
-        // this.props.history.push('/contacts')
     }
+
+    handleEdit = (e) => {
+        this.props.editContact(e.target.value)
+        
+    }
+
 
 
     render() {
@@ -19,7 +24,7 @@ class ContactList extends Component {
                         return (
                             <Link to={`/contacts/${contact.id}`} key={contact.id} className="list-group-item">{contact.name}
                                 <button className={'btn btn-secondary'} id="delete" type="button" value={contact.id} onClick={this.handleClick}>X</button>
-                                {/* <a id="edit" href="#">Edit </a> */}
+                                <button className={'btn btn-secondary'} id="edit" value={contact.id} onClick={this.handleEdit}>Edit</button>
                             </Link>
                         )
                     })}

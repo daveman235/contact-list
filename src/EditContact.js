@@ -3,7 +3,7 @@ import React, { Component } from 'react';
 
 
 // Function that takes in information from user via a form and passes information back to state object
-class AddContact extends Component {
+class EditContact extends Component {
     constructor(props) {
         super(props)
 
@@ -24,7 +24,7 @@ class AddContact extends Component {
                     <label htmlFor="inputName">Name:</label><br></br>
                     <input onChange={(e) => { this.setState({ name: e.target.value }) }} value={this.state.name} type="text" id="name" minLength="8" maxLength="15" size="30" placeholder="" required />
                     <br></br>
-                    <label htmlFor="inputemail">E-mail:</label><br></br>
+                    <label htmlFor="inputEmail">E-mail:</label><br></br>
                     <input onChange={(e) => { this.setState({ email: e.target.value }) }} value={this.state.email} type="email" id="email" pattern="@globex.com" size="30" placeholder="" required />
                     <br></br>
                     <label htmlFor="inputUrl">Image URL:</label><br></br>
@@ -35,7 +35,7 @@ class AddContact extends Component {
                     <br></br>
                     <Link to="/contacts">
                         <button onClick={() => this.props.addContact(this.state)} type="button" className="btn btn-secondary submitContact">
-                            Add Contact
+                            Update Contact
                         </ button>
                     </Link>
                 </form>
@@ -46,4 +46,4 @@ class AddContact extends Component {
     }
 }
 
-export default AddContact
+export default EditContact
